@@ -1,5 +1,7 @@
 # Tugas Compose UI Halaman Profil_D
 
+## Vincentius Dylan Wangsa Wijaya
+### 245150401111001 PAM_D
 Folder ini berisi implementasi halaman profil menggunakan Jetpack Compose sebagai bagian dari praktikum modul Activity Lifecycle, Composable, dan Modifier.
 
 ## Deskripsi
