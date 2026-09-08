@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import vin.pam.praktikum.ui.theme.PraktikumTheme
+import vin.pam.praktikum.ui_halaman_profile.ProfileScreen
 
 // Main Entrance
 class MainActivity : ComponentActivity() {
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-
+            ProfileScreen()
         }
     }
 }
