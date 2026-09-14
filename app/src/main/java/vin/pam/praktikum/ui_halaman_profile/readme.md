@@ -1,5 +1,7 @@
 # Tugas Compose UI Halaman Profil_D
 
+## Vincentius Dylan Wangsa Wijaya
+### 245150401111001 PAM_D
 Folder ini berisi implementasi halaman profil menggunakan Jetpack Compose sebagai bagian dari praktikum modul Activity Lifecycle, Composable, dan Modifier.
 
 ## Deskripsi
@@ -48,3 +50,6 @@ Link ke file gambar:
 - File gambar harus menggunakan huruf kecil tanpa spasi
 - Format yang didukung: PNG, JPG, atau WEBP
 - Jetpack Compose digunakan untuk membangun UI tanpa XML  
+
+<img width="1920" height="1080" alt="Screenshot (64)" src="https://github.com/user-attachments/assets/617b7c60-d3f8-4dff-8f05-0c1f4bbf5b68" />
+<img width="419" height="916" alt="Screenshot 2026-09-08 132120" src="https://github.com/user-attachments/assets/e76f71c0-d859-411f-b2f6-736b0fcd7e56" />
