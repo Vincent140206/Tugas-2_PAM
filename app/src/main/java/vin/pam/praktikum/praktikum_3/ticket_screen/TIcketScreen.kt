@@ -211,8 +211,6 @@ fun TicketScreen() {
             }
         }
     }
-
-
 }
 
 @Composable

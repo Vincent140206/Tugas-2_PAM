@@ -30,6 +30,7 @@ import vin.pam.praktikum.praktikum_3.ImplicitIntentTest
 import vin.pam.praktikum.praktikum_3.ticket_screen.TicketScreen
 import vin.pam.praktikum.praktikum_4.CounterScreen
 import vin.pam.praktikum.praktikum_4.Repo
+import vin.pam.praktikum.praktikum_4.ticket_page.TicketScreens
 import vin.pam.praktikum.ui.theme.PraktikumTheme
 import vin.pam.praktikum.ui_halaman_profile.ProfileScreen
 
@@ -39,40 +40,42 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            var number by rememberSaveable { mutableStateOf(1) }
-
-            val snackbarHostState = remember {
-                SnackbarHostState()
-            }
-
-            Scaffold(
-                modifier = Modifier.fillMaxSize(),
-                snackbarHost = {
-                    SnackbarHost(
-                        hostState = snackbarHostState
-                    )
-                }
-            ) { innerPadding ->
-
-                CounterScreen(
-                    modifier = Modifier.padding(innerPadding),
-                    number = number,
-                    label = "Double",
-                    onButtonClick = {
-                        number *= 2
-                    }
-                )
-
-                LaunchedEffect(number) {
-                    snackbarHostState.showSnackbar(
-                        "Number $number is shown!"
-                    )
-                }
-
-                LaunchedEffect(Unit) {
-                    number = Repo.getData()
-                }
-            }
+            TicketScreens()
         }
+//            var number by rememberSaveable { mutableStateOf(1) }
+//
+//            val snackbarHostState = remember {
+//                SnackbarHostState()
+//            }
+//
+//            Scaffold(
+//                modifier = Modifier.fillMaxSize(),
+//                snackbarHost = {
+//                    SnackbarHost(
+//                        hostState = snackbarHostState
+//                    )
+//                }
+//            ) { innerPadding ->
+//
+//                CounterScreen(
+//                    modifier = Modifier.padding(innerPadding),
+//                    number = number,
+//                    label = "Double",
+//                    onButtonClick = {
+//                        number *= 2
+//                    }
+//                )
+//
+//                LaunchedEffect(number) {
+//                    snackbarHostState.showSnackbar(
+//                        "Number $number is shown!"
+//                    )
+//                }
+//
+//                LaunchedEffect(Unit) {
+//                    number = Repo.getData()
+//                }
+//            }
+//        }
     }
 }
