@@ -4,13 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 enum class BookingState {
     IDLE, LOADING, SUCCESS, ERROR
@@ -19,12 +19,18 @@ enum class BookingState {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TicketScreens() {
-    var name by remember { mutableStateOf("") }
-    var quantity by remember { mutableStateOf(1) }
-    var bookingState by remember { mutableStateOf(BookingState.IDLE) }
+    var name by rememberSaveable { mutableStateOf("") }
+    var quantity by rememberSaveable { mutableIntStateOf(1) }
+    var bookingState by rememberSaveable { mutableStateOf(BookingState.IDLE) }
 
-    val coroutineScope = rememberCoroutineScope()
     val isFormEnabled = bookingState != BookingState.LOADING
+
+    LaunchedEffect(bookingState) {
+        if (bookingState == BookingState.LOADING) {
+            delay(5000)
+            bookingState = BookingState.SUCCESS
+        }
+    }
 
     Scaffold(
         topBar = {
@@ -69,11 +75,7 @@ fun TicketScreens() {
                     if (name.isBlank()) {
                         bookingState = BookingState.ERROR
                     } else {
-                        coroutineScope.launch {
-                            bookingState = BookingState.LOADING
-                            delay(2000)
-                            bookingState = BookingState.SUCCESS
-                        }
+                        bookingState = BookingState.LOADING
                     }
                 },
                 isEnabled = isFormEnabled
