@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 
 enum class BookingState {
@@ -22,6 +23,8 @@ fun TicketScreens() {
     var name by rememberSaveable { mutableStateOf("") }
     var quantity by rememberSaveable { mutableIntStateOf(1) }
     var bookingState by rememberSaveable { mutableStateOf(BookingState.IDLE) }
+    val price = 25000
+    val totalPrice = price * quantity
 
     val isFormEnabled = bookingState != BookingState.LOADING
 
@@ -68,6 +71,13 @@ fun TicketScreens() {
                 onDecrease = { if (quantity > 1) quantity-- },
                 onIncrease = { quantity++ },
                 isEnabled = isFormEnabled
+            )
+
+            Text(
+                text = "Total Harga: Rp $totalPrice",
+                fontWeight = FontWeight.Bold,
+                fontSize = 16.sp,
+                color = Color.DarkGray
             )
 
             Button(
