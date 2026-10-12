@@ -4,41 +4,69 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import vin.pam.praktikum.praktikum_5.screen.navigation.AppNavHost
-import vin.pam.praktikum.ui.theme.PraktikumTheme
+import vin.pam.praktikum.praktikum_6.appnavigasi.navigations.P1DetailRoute
+import vin.pam.praktikum.praktikum_6.appnavigasi.navigations.P1HomeRoute
+import vin.pam.praktikum.praktikum_6.appnavigasi.screens.YouTubeStreamPagerScreen
+import vin.pam.praktikum.praktikum_6.appnavigasi.navigations.YouTubeStreamRoute
+import vin.pam.praktikum.praktikum_6.appnavigasi.screens.P1DetailScreen
+import vin.pam.praktikum.praktikum_6.appnavigasi.screens.P1HomeScreen
 
-// Main Entrance
 class MainActivity : ComponentActivity() {
-//    val gadgets = listOf(
-//        Gadget(1, "Smartphone", "Perangkat komunikasi genggam"),
-//        Gadget(2, "Laptop", "Komputer portabel untuk bekerja"),
-//        Gadget(3, "Tablet", "Perangkat layar sentuh antara hp dan laptop"),
-//        Gadget(4, "Smartwatch", "Jam tangan pintar pelacak kesehatan"),
-//        Gadget(5, "Earbuds", "Perangkat audio nirkabel"),
-//    )
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            PraktikumTheme {
-                val navController = rememberNavController()
 
-                Scaffold { innerPadding ->
-                    Surface(
-                        color = MaterialTheme.colorScheme.background,
-                        modifier = Modifier.padding(innerPadding)
-                    ) {
-                        AppNavHost(navController = navController)
-                    }
+        setContent {
+            MaterialTheme {
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    AppNavigationP1()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun AppNavigationP1() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = P1HomeRoute
+    ) {
+        composable<P1HomeRoute> {
+            P1HomeScreen(
+                onNavigateToDetail = { navController.navigate(P1DetailRoute) }
+            )
+        }
+        composable<P1DetailRoute> {
+            P1DetailScreen(
+                onBack = { navController.popBackStack() }
+            )
+        }
+    }
+}
+
+@Composable
+fun AppNavigationP4() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = YouTubeStreamRoute
+    ) {
+        composable<YouTubeStreamRoute> {
+            YouTubeStreamPagerScreen(
+                onBack = { navController.popBackStack() }
+            )
         }
     }
 }
