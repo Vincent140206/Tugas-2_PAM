@@ -18,5 +18,12 @@ data class TaskDetailRoute(
     val description: String,
     val isCompleted: Boolean
 )
+
+@Serializable
+object ProfileRoute
+
+@Serializable
+object EditProfileRoute
+
 @Serializable
 object YouTubeStreamRoute
