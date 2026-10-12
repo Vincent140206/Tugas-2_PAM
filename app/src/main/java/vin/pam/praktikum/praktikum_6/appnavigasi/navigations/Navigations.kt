@@ -9,4 +9,14 @@ object P1HomeRoute
 object P1DetailRoute
 
 @Serializable
+object TaskListRoute
+
+@Serializable
+data class TaskDetailRoute(
+    val id: Int,
+    val title: String,
+    val description: String,
+    val isCompleted: Boolean
+)
+@Serializable
 object YouTubeStreamRoute
