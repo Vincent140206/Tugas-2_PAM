@@ -1,4 +1,5 @@
 plugins {
+    kotlin("plugin.serialization") version "2.0.0"
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
@@ -38,9 +39,14 @@ android {
 }
 
 dependencies {
+    val nav_version = "2.8.0"
+
     implementation("com.squareup.retrofit2:retrofit:3.0.0")
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
     implementation("androidx.compose.material:material-icons-extended")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
+    implementation("androidx.navigation:navigation-compose:${nav_version}")
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.benchmark.traceprocessor)
